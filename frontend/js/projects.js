@@ -5,6 +5,7 @@ fetch('https://api.github.com/users/oltsu-code/repos')
 
         data.forEach(repo => {
             const project = document.createElement('div');
+            project.classList.add('project')
             project.innerHTML = `
                 <h3>${repo.name}</h3>
                 <p>${repo.description}</p>
