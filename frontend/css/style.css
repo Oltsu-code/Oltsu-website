@@ -38,9 +38,48 @@ nav ul li a {
     text-decoration: none;
 }
 
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    z-index: 1000; 
+}
+
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px 0;
+}
+
+.dropdown-menu {
+    display: none;
+    text-align: left;
+}
+
+@media only screen and (max-width: 600px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: block;
+    }
+}
+
 main {
     flex: 1;
     padding: 20px;
+    padding-top: 100px;
 }
 
 .hero {
