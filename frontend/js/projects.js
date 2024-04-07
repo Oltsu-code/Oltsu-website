@@ -5,7 +5,10 @@ fetch('https://api.github.com/users/oltsu-code/repos')
 
         data.forEach(repo => {
             const project = document.createElement('div');
-            project.classList.add('project')
+            project.classList.add('project');
+            if (repo.description == null) {
+                repo.description = "No description";
+            }
             project.innerHTML = `
                 <h3>${repo.name}</h3>
                 <p>${repo.description}</p>
@@ -14,4 +17,10 @@ fetch('https://api.github.com/users/oltsu-code/repos')
             projectsContainer.appendChild(project);
         });
     })
-    .catch(error => console.error('Error fetching GitHub repositories:', error));
+    .catch(error => {
+        console.error('Error fetching GitHub repositories:', error)
+        document.getElementById('project-container').innerHTML = `
+            <h3>Error fetching GitHub repositories:</h3><br/>
+            <p>${error}<p>
+        `;
+    });

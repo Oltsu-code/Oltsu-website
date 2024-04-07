@@ -11,6 +11,29 @@ app.get('/', (req, res) => {
     res.redirect('/home');
 });
 
+app.get('/project/:project', (req, res) => {
+    // TODO: add project handling
+});
+
+app.get('/app/:app', (req, res, next) => {
+    const app = req.params.app;
+    const filePath = path.join(__dirname, '..', 'frontend', 'pages', 'projects', app, 'index.html');
+
+    fs.access(filePath, fs.constants.F_OK, (err) => {
+        if (err) {
+            next();
+        } else {
+            fs.readFile(filePath, 'utf8', (err, data) => {
+                if (err) {
+                    res.status(500).send('Internal Server Error');
+                } else {
+                    res.send(data);
+                }
+            });
+        }
+    });
+});
+
 app.get('/:page', (req, res, next) => {
     const page = req.params.page;
     const filePath = path.join(__dirname, '..', 'frontend', 'pages', `${page}.html`);
