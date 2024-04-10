@@ -10,7 +10,6 @@ html, body, h1, h2, h3, p, ul, li {
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background: rgb(21, 230, 175);
     background: linear-gradient(45deg, rgba(21, 230, 174, 0.5) 0%, rgba(0, 207, 255, 0.5) 100%);
     color: #333;
     display: flex;
@@ -47,7 +46,11 @@ nav ul li a {
     text-decoration: none;
 }
 
-.sticky {
+nav-selected {
+    background-color: #fff;
+}
+
+.nav {
     position: fixed;
     top: 0;
     width: 100%;
@@ -61,6 +64,7 @@ nav ul li a {
 .hamburger-menu {
     display: none;
     cursor: pointer;
+    margin-left: 10px;
 }
 
 .bar {
@@ -136,28 +140,31 @@ main {
     background-color: #555;
 }
 
-.projects {
+.text-box {
     background-color: #fff;
-    border-radius: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-top: 30px;
+    border-radius: 10px;
+    border: 3px solid #ddd;
+    padding: 15px;
+    margin: 25px;
+    font-size: 25px;
 }
 
-.projects h2 {
+.text-box h2 {
     font-size: 35px;
     margin-bottom: 20px;
 }
 
-.project {
-    margin-bottom: 20px;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 26px;
-}
-
-.project h3 {
+.text-box h3 {
     font-size: 30px;
     margin-bottom: 10px;
+}
+
+.item {
+    background-color: #fff;
+    border-radius: 10px;
+    border: 3px solid #ddd;
+    padding: 15px;
+    margin-top: 30px; 
+    margin-bottom: 20px;
+    font-size: 25px; 
 }

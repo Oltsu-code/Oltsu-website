@@ -5,14 +5,14 @@ fetch('https://api.github.com/users/oltsu-code/repos')
 
         data.forEach(repo => {
             const project = document.createElement('div');
-            project.classList.add('project');
+            project.classList.add('item');
             if (repo.description == null) {
                 repo.description = "No description";
             }
             project.innerHTML = `
                 <h3>${repo.name}</h3>
                 <p>${repo.description}</p>
-                <a href="${repo.html_url}" target="_blank">View on GitHub</a>
+                <a href="project/${repo.name}" target="_blank">View</a>
             `;
             projectsContainer.appendChild(project);
         });

@@ -10,11 +10,10 @@
 </head>
 
 <body>
-    <header class="sticky">
-
+    <header class="nav">
         <nav>
             <ul class="nav-links">
-                <li><a href="/home">Home</a></li>
+                <li class="nav-selected"><a href="/home">Home</a></li>
                 <li><a href="/about">About</a></li>
                 <li><a href="/contact">Contact</a></li>
                 <li><a href="/projects">Projects</a></li>
@@ -26,7 +25,7 @@
             </div>
             <div class="dropdown-menu" id="dropdown-menu">
                 <ul>
-                    <li><a href="/home">Home</a></li> <br>
+                    <li class="nav-selected"><a href="/home">Home</a></li> <br>
                     <li><a href="/about">About</a></li> <br>
                     <li><a href="/contact">Contact</a></li> <br>
                     <li><a href="/projects">Projects</a></li>
@@ -38,12 +37,12 @@
     <main>
         <section class="hero">
             <div class="hero-content">
-                <h2>Welcome to my portfolio!</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut malesuada.</p>
+                <h2>Hello!</h2>
+                <p>I'm a Finnish fullstack indie developer with expertise in Java, C#, JavaScript, HTML & CSS, Lua, and C++. Explore my latest projects and see what I can do!</p>
                 <a href="#projects" class="btn">View Projects</a>
             </div>
         </section>
-        <section id="projects" class="projects">
+        <section id="projects" class="text-box">
             <h2>Featured Projects</h2>
             <div id="project-container"></div>
         </section>
