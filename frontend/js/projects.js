@@ -1,7 +1,7 @@
 fetch('https://api.github.com/users/oltsu-code/repos')
     .then(response => response.json())
     .then(data => {
-        const projectsContainer = document.getElementById('project-container');
+        const projectsContainer = document.getElementById('project-list-container');
 
         data.forEach(repo => {
             const project = document.createElement('div');
