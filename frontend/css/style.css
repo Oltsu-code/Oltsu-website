@@ -57,8 +57,11 @@ nav ul li a {
     z-index: 1000;
 }
 
-.nav-selected {
-    background-color: #fff;
+.nav-selected a {
+    color: black;
+    background-color: #e5e2e2;
+    padding: 15px;
+    font-size: 22px;
 }
 
 .hamburger-menu {
@@ -84,6 +87,16 @@ nav ul li a {
         display: none;
     }
 
+    .nav-selected a {
+        color: black;
+        background-color: #e5e2e2;
+        padding: 0px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        padding-right: 2px;
+        font-size: 22px;
+    }
+
     .hamburger-menu {
         display: block;
     }
@@ -97,7 +110,7 @@ main {
 }
 
 .hero {
-    background-image: url('../img/background-image.jpg');
+    background-image: url('../img/hero-image.jpg');
     background-size: cover;
     background-position: center;
     position: relative;
