@@ -11,11 +11,23 @@ app.get('/', (req, res) => {
     res.redirect('/home');
 });
 
-app.get('/project/:project', (req, res) => {
-    // TODO: add project handling
+app.get('/project/:project', handleProjectRequest);
+app.get('/app/:app', handleAppRequest);
+app.get('/:page', handlePageRequest);
+
+app.use(handle404Error);
+app.use(handle500Error);
+
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
 
-app.get('/app/:app', (req, res, next) => {
+function handleProjectRequest(req, res, next) {
+    // TODO: add project handling
+    next();
+}
+
+function handleAppRequest(req, res, next) {
     const app = req.params.app;
     const filePath = path.join(__dirname, '..', 'frontend', 'pages', 'projects', app, 'index.html');
 
@@ -25,16 +37,16 @@ app.get('/app/:app', (req, res, next) => {
         } else {
             fs.readFile(filePath, 'utf8', (err, data) => {
                 if (err) {
-                    res.status(500).send('Internal Server Error');
+                    next(err);
                 } else {
                     res.send(data);
                 }
             });
         }
     });
-});
+}
 
-app.get('/:page', (req, res, next) => {
+function handlePageRequest(req, res, next) {
     const page = req.params.page;
     const filePath = path.join(__dirname, '..', 'frontend', 'pages', `${page}.html`);
 
@@ -44,24 +56,22 @@ app.get('/:page', (req, res, next) => {
         } else {
             fs.readFile(filePath, 'utf8', (err, data) => {
                 if (err) {
-                    res.status(500).send('Internal Server Error');
+                    next(err);
                 } else {
                     res.send(data);
                 }
             });
         }
     });
-});
+}
 
-app.use((req, res, next) => {
+function handle404Error(req, res, next) {
     res.status(404).sendFile(path.join(__dirname, '..', 'frontend', 'errors', '404.html'));
-});
+}
 
-app.use((err, req, res, next) => {
+function handle500Error(err, req, res, next) {
     console.error(err.stack);
     res.status(500).sendFile(path.join(__dirname, '..', 'frontend', 'errors', '500.html'));
-});
+}
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
+
