@@ -1,26 +1,34 @@
-fetch('https://api.github.com/users/oltsu-code/repos')
-    .then(response => response.json())
-    .then(data => {
-        const projectsContainer = document.getElementById('project-list-container');
+const projectContainer = document.getElementById('project-list-container');
 
-        data.forEach(repo => {
-            const project = document.createElement('div');
-            project.classList.add('item');
-            if (repo.description == null) {
-                repo.description = "No description";
-            }
-            project.innerHTML = `
-                <h3>${repo.name}</h3>
-                <p>${repo.description}</p>
-                <a href="project/${repo.name}" target="_blank">View</a>
-            `;
-            projectsContainer.appendChild(project);
-        });
-    })
-    .catch(error => {
-        console.error('Error fetching GitHub repositories:', error)
-        document.getElementById('project-container').innerHTML = `
-            <h3>Error fetching GitHub repositories:</h3><br/>
-            <p>${error}<p>
-        `;
-    });
+async function fetchProjects() {
+  try {
+    const response = await fetch('https://api.github.com/users/oltsu-code/repos');
+    const data = await response.json();
+
+    data.forEach(renderProject);
+  } catch (error) {
+    renderError(error);
+  }
+}
+
+function renderProject(repo) {
+  const description = repo.description || "No description";
+  const projectElement = document.createElement('div');
+  projectElement.classList.add('item');
+  projectElement.innerHTML = `
+    <h3>${repo.name}</h3>
+    <p>${description}</p>
+    <a href="project/${repo.name}" target="_blank">View</a>
+  `;
+  projectContainer.appendChild(projectElement);
+}
+
+function renderError(error) {
+  const errorMessage = document.createElement('p');
+  errorMessage.classList.add('error');
+  errorMessage.textContent = `Couldn't fetch GitHub repositories! Check console for more info.`;
+  projectContainer.appendChild(errorMessage);
+  console.error(`Error fetching GitHub repositories: ${error}`);
+}
+
+fetchProjects();
