@@ -124,7 +124,7 @@ main {
     border-radius: 15px;
 }
 
-.hero-content {
+.hero-content { 
     max-width: 600px;
 }
 
@@ -185,4 +185,50 @@ main {
 .contact-container img {
     width: 75px;
     height: 75;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+footer p {
+    margin: 0;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px
+
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.error {
+    color: gray;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-style: italic;
+    text-align: center;
 }
